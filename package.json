@@ -22,5 +22,11 @@
       "version": "12.16.1",
       "onFail": "download"
     }
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  },
+  "scripts": {
+    "typecheck": "tsc"
   }
 }
