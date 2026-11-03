@@ -6,7 +6,7 @@ import jsxA11y from "eslint-plugin-jsx-a11y-x";
 import prettier from "eslint-config-prettier/flat";
 
 export default defineConfig([
-  globalIgnores(["dist"]),
+  globalIgnores(["dist", "storybook-static"]),
   js.configs.recommended,
   tseslint.configs.strict,
   reactHooks.configs.flat.recommended,
