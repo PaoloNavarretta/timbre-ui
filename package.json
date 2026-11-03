@@ -4,6 +4,17 @@
   "private": true,
   "description": "A warm, accessible React component library with a rigorous engineering foundation.",
   "type": "module",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.node.json",
+    "build": "vite build && tsc -p tsconfig.build.json"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
   "author": "Paolo Navarretta (https://github.com/PaoloNavarretta)",
   "license": "MIT",
   "repository": {
@@ -24,9 +35,8 @@
     }
   },
   "devDependencies": {
-    "typescript": "^7.0.2"
-  },
-  "scripts": {
-    "typecheck": "tsc"
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
   }
 }

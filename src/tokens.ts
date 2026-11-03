@@ -1,3 +1,4 @@
+// Internal: consumers build token names through tokenName(), never by hand.
 const TOKEN_PREFIX = "--timbre-";
 
 export function tokenName(name: string, group?: string): string {
