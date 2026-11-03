@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   build: {
@@ -7,5 +7,9 @@ export default defineConfig({
       formats: ["es"],
       fileName: "index",
     },
+  },
+  test: {
+    include: ["src/**/*.test.ts"],
+    environment: "node",
   },
 });
