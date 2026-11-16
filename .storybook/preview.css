@@ -1,0 +1,5 @@
+body {
+  background: var(--timbre-color-canvas);
+  color: var(--timbre-color-ink);
+  font-family: var(--timbre-font-sans);
+}
