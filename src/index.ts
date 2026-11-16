@@ -1,1 +1,2 @@
-export { tokenName } from "./tokens";
+export { Button } from "./components/button";
+export type { ButtonProps } from "./components/button";
