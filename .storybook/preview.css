@@ -3,3 +3,9 @@ body {
   color: var(--timbre-color-ink);
   font-family: var(--timbre-font-sans);
 }
+
+/* MDX pages have no story, so the theme decorator never sets data-theme.
+   Their background is Storybook's white: keep the tokens light to match. */
+html:not([data-theme]) {
+  color-scheme: light;
+}

@@ -9,6 +9,26 @@ const preview: Preview = {
     a11y: {
       test: "error",
     },
+    options: {
+      storySort: {
+        order: [
+          "Introduction",
+          "Foundations",
+          [
+            "Theming",
+            "Colors",
+            "Typography",
+            "Spacing and shape",
+            "Elevation and motion",
+            "Icons",
+            "Logo",
+          ],
+          "Guides",
+          ["Accessibility", "Component guidelines"],
+          "Components",
+        ],
+      },
+    },
   },
   decorators: [
     withThemeByDataAttribute({
