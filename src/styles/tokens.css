@@ -1,0 +1,144 @@
+/* Timbre design tokens. */
+@layer timbre.reset, timbre.tokens, timbre.components;
+
+@layer timbre.tokens {
+  /* Primitives: private (leading underscore). Never use them in components or apps. */
+  :root {
+    --_timbre-cream-50: #fffdf9;
+    --_timbre-cream-100: #f9f6f0;
+    --_timbre-cream-200: #f2eee6;
+    --_timbre-cream-300: #ded8ce;
+    --_timbre-cream-ink: #f2ede4;
+    --_timbre-stone-500: #8a8277;
+    --_timbre-stone-600: #625f57;
+    --_timbre-stone-400: #b3ab9f;
+    --_timbre-stone-700: #766e63;
+    --_timbre-graphite-800: #3a352f;
+    --_timbre-graphite-850: #2d2924;
+    --_timbre-graphite-900: #24211d;
+    --_timbre-graphite-950: #1c1a17;
+    --_timbre-graphite-text: #292821;
+    --_timbre-terracotta-100: #faeee8;
+    --_timbre-terracotta-300: #e8957a;
+    --_timbre-terracotta-200: #f0ad96;
+    --_timbre-terracotta-500: #c4694d;
+    --_timbre-terracotta-600: #a8543b;
+    --_timbre-terracotta-700: #91452f;
+    --_timbre-terracotta-900: #3d2820;
+    --_timbre-sage-100: #e4ecdf;
+    --_timbre-sage-300: #a9c29b;
+    --_timbre-sage-700: #46603a;
+    --_timbre-sage-900: #263022;
+    --_timbre-lavender-100: #eee8f7;
+    --_timbre-lavender-300: #bfb0dc;
+    --_timbre-lavender-700: #5e4b8a;
+    --_timbre-lavender-900: #2c2738;
+    --_timbre-butter-100: #f8efcf;
+    --_timbre-butter-300: #e9cf7a;
+    --_timbre-butter-700: #6e5612;
+    --_timbre-butter-900: #352f1c;
+    --_timbre-sky-100: #e5eef4;
+    --_timbre-sky-300: #a6c3d8;
+    --_timbre-sky-700: #355e7c;
+    --_timbre-sky-900: #212c33;
+    --_timbre-red-100: #f8e1de;
+    --_timbre-red-300: #f0a39a;
+    --_timbre-red-600: #c4382b;
+    --_timbre-red-700: #a8281d;
+    --_timbre-red-900: #3e1f1b;
+    --_timbre-blue-600: #526bb1;
+    --_timbre-blue-300: #9fb2e8;
+  }
+
+  /* Constants: spacing, shape, size, type and motion. The same in every theme. */
+  :root {
+    --timbre-space-1: 4px;
+    --timbre-space-2: 8px;
+    --timbre-space-3: 12px;
+    --timbre-space-4: 16px;
+    --timbre-space-6: 24px;
+    --timbre-space-8: 32px;
+    --timbre-radius-sm: 6px;
+    --timbre-radius-control: 10px;
+    --timbre-radius-card: 16px;
+    --timbre-radius-pill: 9999px;
+    --timbre-control-sm: 32px;
+    --timbre-control-md: 40px;
+    --timbre-control-lg: 48px;
+    --timbre-font-sans:
+      "Instrument Sans Variable", "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+    --timbre-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --timbre-duration-fast: 120ms;
+    --timbre-duration-overlay: 180ms;
+    --timbre-ease-out: cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  /* Semantic tokens: the public API. Light and dark values side by side. */
+  :root {
+    color-scheme: light dark;
+
+    --timbre-color-canvas: light-dark(var(--_timbre-cream-100), var(--_timbre-graphite-950));
+    --timbre-color-surface: light-dark(var(--_timbre-cream-50), var(--_timbre-graphite-900));
+    --timbre-color-surface-muted: light-dark(var(--_timbre-cream-200), var(--_timbre-graphite-850));
+    --timbre-color-line: light-dark(var(--_timbre-cream-300), var(--_timbre-graphite-800));
+    --timbre-color-line-strong: light-dark(var(--_timbre-stone-500), var(--_timbre-stone-700));
+    --timbre-color-ink: light-dark(var(--_timbre-graphite-text), var(--_timbre-cream-ink));
+    --timbre-color-ink-muted: light-dark(var(--_timbre-stone-600), var(--_timbre-stone-400));
+    --timbre-color-primary: light-dark(
+      var(--_timbre-terracotta-600),
+      var(--_timbre-terracotta-300)
+    );
+    --timbre-color-primary-hover: light-dark(
+      var(--_timbre-terracotta-700),
+      var(--_timbre-terracotta-200)
+    );
+    --timbre-color-primary-soft: light-dark(
+      var(--_timbre-terracotta-100),
+      var(--_timbre-terracotta-900)
+    );
+    --timbre-color-on-primary: light-dark(var(--_timbre-cream-50), var(--_timbre-graphite-950));
+    --timbre-color-focus: light-dark(var(--_timbre-blue-600), var(--_timbre-blue-300));
+    --timbre-color-sage-soft: light-dark(var(--_timbre-sage-100), var(--_timbre-sage-900));
+    --timbre-color-sage-ink: light-dark(var(--_timbre-sage-700), var(--_timbre-sage-300));
+    --timbre-color-lavender-soft: light-dark(
+      var(--_timbre-lavender-100),
+      var(--_timbre-lavender-900)
+    );
+    --timbre-color-lavender-ink: light-dark(
+      var(--_timbre-lavender-700),
+      var(--_timbre-lavender-300)
+    );
+    --timbre-color-butter-soft: light-dark(var(--_timbre-butter-100), var(--_timbre-butter-900));
+    --timbre-color-butter-ink: light-dark(var(--_timbre-butter-700), var(--_timbre-butter-300));
+    --timbre-color-sky-soft: light-dark(var(--_timbre-sky-100), var(--_timbre-sky-900));
+    --timbre-color-sky-ink: light-dark(var(--_timbre-sky-700), var(--_timbre-sky-300));
+    --timbre-color-danger: light-dark(var(--_timbre-red-700), var(--_timbre-red-300));
+    --timbre-color-danger-fill: light-dark(var(--_timbre-red-700), var(--_timbre-red-600));
+    --timbre-color-danger-soft: light-dark(var(--_timbre-red-100), var(--_timbre-red-900));
+    --timbre-color-on-danger: var(--_timbre-cream-50);
+    --timbre-color-scrim: light-dark(#1c1a1766, #000000a6);
+    --timbre-shadow-sm:
+      0 1px 2px light-dark(#2928210f, transparent), 0 1px 3px light-dark(#2928211a, #00000099);
+    --timbre-shadow-overlay:
+      0 4px 8px light-dark(#29282114, transparent),
+      0 16px 32px -4px light-dark(#2928212e, #000000cc);
+    --timbre-focus-ring: 0 0 0 2px var(--timbre-color-surface), 0 0 0 4px var(--timbre-color-focus);
+  }
+
+  /* Themes: each one only picks a colour scheme. */
+  [data-theme="timbre-light"] {
+    color-scheme: light;
+  }
+
+  [data-theme="timbre-dark"] {
+    color-scheme: dark;
+  }
+
+  /* Reduced motion: no animation time for users who asked for it. */
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --timbre-duration-fast: 0ms;
+      --timbre-duration-overlay: 0ms;
+    }
+  }
+}

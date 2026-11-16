@@ -7,10 +7,12 @@ export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: "src/index.ts",
+      entry: "src/library.ts",
       formats: ["es"],
       fileName: "index",
+      cssFileName: "styles",
     },
+    cssTarget: ["chrome123", "edge123", "firefox120", "safari17.5"],
     rolldownOptions: {
       external: [/^react($|\/)/, /^react-dom($|\/)/],
     },
