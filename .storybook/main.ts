@@ -4,6 +4,11 @@ import remarkGfm from "remark-gfm";
 const config: StorybookConfig = {
   framework: "@storybook/react-vite",
   stories: ["../src/**/*.mdx", "../src/**/*.stories.tsx"],
+  staticDirs: [
+    { from: "../src/docs/assets/logos", to: "/logos" },
+    // A file named favicon.svg in a static folder becomes the browser tab icon.
+    "./public",
+  ],
   addons: [
     {
       name: "@storybook/addon-docs",
