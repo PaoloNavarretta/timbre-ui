@@ -1,0 +1,53 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import monogram from "./assets/logos/monogram.svg";
+import monogramDark from "./assets/logos/monogram-dark.svg";
+import monogramSmall from "./assets/logos/monogram-small.svg";
+import monogramSmallDark from "./assets/logos/monogram-small-dark.svg";
+import glyph from "./assets/logos/glyph.svg";
+import glyphCream from "./assets/logos/glyph-cream.svg";
+
+<Meta title="Foundations/Logo" />
+
+export const Tile = ({ src, label, ground }) => (
+  <figure style={{ margin: 0, display: "grid", gap: 8, justifyItems: "center" }}>
+    <div
+      style={{
+        width: 160,
+        height: 120,
+        display: "grid",
+        placeContent: "center",
+        borderRadius: 16,
+        background: ground,
+        border: "1px solid var(--timbre-color-line)",
+      }}
+    >
+      <img src={src} alt="" width={64} height={64} />
+    </div>
+    <figcaption style={{ fontSize: 13 }}>{label}</figcaption>
+  </figure>
+);
+
+# Logo
+
+The monogram: a lowercase **t** whose crossbar is a wave.
+
+<div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+  <Tile src={monogram} label="monogram.svg" ground="#fffdf9" />
+  <Tile src={monogramDark} label="monogram-dark.svg" ground="#1c1a17" />
+  <Tile src={monogramSmall} label="monogram-small.svg" ground="#fffdf9" />
+  <Tile src={monogramSmallDark} label="monogram-small-dark.svg" ground="#1c1a17" />
+  <Tile src={glyph} label="glyph.svg" ground="#fffdf9" />
+  <Tile src={glyphCream} label="glyph-cream.svg" ground="#a8543b" />
+</div>
+
+## Which file to use
+
+| File                           | When                                                    |
+| ------------------------------ | ------------------------------------------------------- |
+| `monogram.svg`                 | The primary logo, from 32px up, on light backgrounds.   |
+| `monogram-dark.svg`            | The primary logo on dark backgrounds.                   |
+| `monogram-small.svg`           | Below 32px, for example favicons, on light backgrounds. |
+| `monogram-small-dark.svg`      | Below 32px on dark backgrounds.                         |
+| `glyph.svg`, `glyph-cream.svg` | The glyph alone, where a filled square is too heavy.    |
+
+The logo colours are fixed and do not follow the theme: pick the file for the background it sits on.

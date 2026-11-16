@@ -1,0 +1,58 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Theming" />
+
+# Theming
+
+Timbre has two themes, **Timbre Light** and **Timbre Dark**. Both are built from the same semantic tokens, so every component works in both without extra code.
+
+## Choosing a theme
+
+| Markup                      | Result                                               |
+| --------------------------- | ---------------------------------------------------- |
+| No `data-theme`             | Follows the user's system preference (light or dark) |
+| `data-theme="timbre-light"` | Always light                                         |
+| `data-theme="timbre-dark"`  | Always dark                                          |
+
+The attribute works on `<html>` and on any container. Themes can be nested: a dark panel inside a light page is dark, and a light card inside that panel is light again.
+
+```html
+<html data-theme="timbre-light">
+  <body>
+    <aside data-theme="timbre-dark">
+      <!-- Everything in here uses Timbre Dark -->
+    </aside>
+  </body>
+</html>
+```
+
+Each theme sets the CSS property [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme), so native scrollbars and form controls follow the theme too.
+
+## Applying your brand
+
+Semantic tokens are the public API. To brand an app, redefine them on a container:
+
+```css
+.my-brand {
+  --timbre-color-primary: light-dark(#366b5e, #8fc7b6);
+  --timbre-color-primary-hover: light-dark(#2b574c, #a8d6c8);
+}
+```
+
+[`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark) takes the light value first and the dark value second, so one declaration covers both themes.
+
+Never use the primitives (`--_timbre-*`, with a leading underscore). They are private and can change in any release.
+
+## Overriding styles
+
+All Timbre styles live in [cascade layers](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer):
+
+```css
+@layer timbre.reset, timbre.tokens, timbre.components;
+```
+
+Any style your app writes outside a layer wins over every Timbre style, whatever its specificity. A simple class is enough: no `!important`, no long selectors.
+
+## Reduced motion
+
+When the user asks the system for reduced motion, every Timbre duration becomes `0ms`: transitions become instant. Loading spinners keep turning, much more slowly, so progress stays visible.

@@ -1,0 +1,60 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Elevation and motion" />
+
+export const Elevation = ({ token }) => (
+  <div
+    style={{
+      width: 200,
+      height: 112,
+      display: "grid",
+      placeContent: "center",
+      borderRadius: "var(--timbre-radius-card)",
+      background: "var(--timbre-color-surface)",
+      color: "var(--timbre-color-ink-muted)",
+      boxShadow: `var(${token})`,
+      fontSize: 13,
+    }}
+  >
+    {token.replace("--timbre-", "")}
+  </div>
+);
+
+# Elevation and motion
+
+## Elevation
+
+Two elevations and one focus ring.
+
+| Token                     | Use it for                                                              |
+| ------------------------- | ----------------------------------------------------------------------- |
+| `--timbre-shadow-sm`      | Resting surfaces that need a little lift: cards, menus.                 |
+| `--timbre-shadow-overlay` | Elements above the page: dialogs, popovers.                             |
+| `--timbre-focus-ring`     | Keyboard focus on every interactive element. Use with `:focus-visible`. |
+
+<div
+  style={{
+    display: "flex",
+    gap: 24,
+    flexWrap: "wrap",
+    padding: 24,
+    background: "var(--timbre-color-canvas)",
+    borderRadius: 16,
+  }}
+>
+  <Elevation token="--timbre-shadow-sm" />
+  <Elevation token="--timbre-shadow-overlay" />
+  <Elevation token="--timbre-focus-ring" />
+</div>
+
+The focus ring is made of two rings: an inner one in the surface colour and an outer one in `--timbre-color-focus`. It stays visible on any background, in both themes.
+
+## Motion
+
+| Token                       | Value                        | Use it for                                 |
+| --------------------------- | ---------------------------- | ------------------------------------------ |
+| `--timbre-duration-fast`    | 120ms                        | Hover and press feedback, colour changes.  |
+| `--timbre-duration-overlay` | 180ms                        | Dialogs and popovers opening and closing.  |
+| `--timbre-ease-out`         | `cubic-bezier(0.2, 0, 0, 1)` | Every transition: fast start, gentle stop. |
+
+When the user asks the system for [reduced motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion), both durations become `0ms`.

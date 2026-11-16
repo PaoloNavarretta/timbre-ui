@@ -1,0 +1,37 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Guides/Accessibility" />
+
+# Accessibility
+
+Accessibility is part of the contract of every Timbre component, like its props.
+
+## The target
+
+Every component meets [WCAG 2.2](https://www.w3.org/TR/WCAG22/) level **AA**, in both themes.
+
+| Area           | What Timbre guarantees                                                                   |
+| -------------- | ---------------------------------------------------------------------------------------- |
+| Semantics      | Native HTML elements first: a button is a `<button>`, a field has a real `<label>`.      |
+| Keyboard       | Everything works with the keyboard alone, in a logical order, with a visible focus ring. |
+| Screen readers | Every control has an accessible name; states such as invalid or expanded are announced.  |
+| Contrast       | Text pairs meet 4.5:1, control borders and focus rings 3:1, in both themes.              |
+| Target size    | Interactive targets are at least 24 × 24 pixels; the smallest control is 32px high.      |
+| Motion         | Durations drop to zero when the user asks for reduced motion.                            |
+
+## How it is checked
+
+| Check                      | Tool                                                                                                            | When                            |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| Code patterns              | [eslint-plugin-jsx-a11y-x](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x)                              | `pnpm lint`                     |
+| Rendered stories           | [axe-core](https://github.com/dequelabs/axe-core) through the Storybook a11y addon; a violation fails the test  | `pnpm test`                     |
+| Behaviour                  | [Testing Library](https://testing-library.com/docs/queries/about/#priority) queries by role and accessible name | `pnpm test`                     |
+| Keyboard and screen reader | By hand, with the keyboard and VoiceOver                                                                        | Every component, before release |
+
+Automated tools find only part of the accessibility problems. The manual checks are not optional.
+
+## Further reading
+
+- [W3C, WCAG 2.2 at a glance](https://www.w3.org/WAI/standards-guidelines/wcag/glance/)
+- [W3C, ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
+- [MDN, Accessibility](https://developer.mozilla.org/en-US/docs/Web/Accessibility)

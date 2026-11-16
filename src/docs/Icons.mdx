@@ -1,0 +1,111 @@
+import { Meta, IconGallery, IconItem } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Icons" />
+
+export const files = import.meta.glob("./assets/icons/*.svg", {
+  eager: true,
+  query: "?raw",
+  import: "default",
+});
+
+export const Icon = ({ name }) => (
+  <span
+    aria-hidden="true"
+    style={{ display: "inline-flex", width: 24, height: 24, color: "var(--timbre-color-ink)" }}
+    dangerouslySetInnerHTML={{ __html: files[`./assets/icons/${name}.svg`] }}
+  />
+);
+
+export const Group = ({ names }) => (
+  <IconGallery>
+    {names.map((name) => (
+      <IconItem key={name} name={name}>
+        <Icon name={name} />
+      </IconItem>
+    ))}
+  </IconGallery>
+);
+
+# Icons
+
+61 outline icons on a 24px grid, 1.5px stroke, drawn in `currentColor`: they take the colour of the text around them, in both themes. Use them at 16, 20 or 24px.
+
+## Accessibility
+
+| Situation                                    | What to do                                                            |
+| -------------------------------------------- | --------------------------------------------------------------------- |
+| The icon sits next to a text label           | It is decorative: hide it with `aria-hidden="true"`.                  |
+| The icon is the only content of a button     | The button needs an accessible name, for example `aria-label="Mute"`. |
+| The icon carries meaning on its own (status) | Pair it with text, or give it a text alternative.                     |
+
+More on accessible names: [MDN, aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label).
+
+## Media and calls
+
+<Group
+  names={[
+    "mic",
+    "mic-off",
+    "camera",
+    "camera-off",
+    "screen-share",
+    "volume",
+    "volume-off",
+    "headphones",
+    "phone",
+    "phone-hangup",
+    "record",
+    "captions",
+    "chat",
+    "hand",
+    "users",
+    "signal",
+    "waveform",
+    "fullscreen",
+    "layout-grid",
+    "leave",
+  ]}
+/>
+
+## Interface
+
+<Group
+  names={[
+    "check",
+    "close",
+    "plus",
+    "minus",
+    "chevron-down",
+    "chevron-up",
+    "chevron-left",
+    "chevron-right",
+    "arrow-left",
+    "arrow-right",
+    "search",
+    "menu",
+    "more",
+    "settings",
+    "filter",
+    "copy",
+    "edit",
+    "trash",
+    "eye",
+    "eye-off",
+    "lock",
+    "link",
+    "external-link",
+    "download",
+    "upload",
+    "sun",
+    "moon",
+    "palette",
+  ]}
+/>
+
+## Status
+
+<Group names={["info", "success", "warning", "error", "bell", "clock"]} />
+
+## Objects
+
+<Group names={["home", "user", "mail", "calendar", "folder", "file", "code"]} />

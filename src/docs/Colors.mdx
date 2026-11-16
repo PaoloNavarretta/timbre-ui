@@ -1,0 +1,219 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Colors" />
+
+export const Swatch = ({ token, theme }) => (
+  <div
+    data-theme={theme}
+    title={`${token} in ${theme}`}
+    style={{
+      width: 72,
+      height: 40,
+      borderRadius: 8,
+      border: "1px solid var(--timbre-color-line-strong)",
+      background: `var(${token})`,
+    }}
+  />
+);
+
+export const ColorTable = ({ rows }) => (
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Light</th>
+        <th>Dark</th>
+        <th>Use it for</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map(([token, light, dark, usage]) => (
+        <tr key={token}>
+          <td>
+            <code>{token}</code>
+          </td>
+          <td>
+            <Swatch token={token} theme="timbre-light" />
+            <small>{light}</small>
+          </td>
+          <td>
+            <Swatch token={token} theme="timbre-dark" />
+            <small>{dark}</small>
+          </td>
+          <td>{usage}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+);
+
+# Colors
+
+Use **semantic tokens only**. Each row shows the token, its value in Timbre Light and Timbre Dark, and where it belongs. Every text pair meets [WCAG 2.2 AA](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) in both themes.
+
+## Surfaces and text
+
+<ColorTable
+  rows={[
+    [
+      "--timbre-color-canvas",
+      "#f9f6f0",
+      "#1c1a17",
+      "Application background, behind every surface.",
+    ],
+    ["--timbre-color-surface", "#fffdf9", "#24211d", "Cards, panels, inputs, dialogs."],
+    [
+      "--timbre-color-surface-muted",
+      "#f2eee6",
+      "#2d2924",
+      "Secondary areas, disabled fills, hover on quiet controls.",
+    ],
+    [
+      "--timbre-color-line",
+      "#ded8ce",
+      "#3a352f",
+      "Decorative hairlines and dividers only; never the only edge of a control.",
+    ],
+    [
+      "--timbre-color-line-strong",
+      "#8a8277",
+      "#766e63",
+      "Borders of inputs, checkboxes and switches (3:1 on surface and canvas).",
+    ],
+    [
+      "--timbre-color-ink",
+      "#292821",
+      "#f2ede4",
+      "Body text and headings, on canvas, surface and surface-muted.",
+    ],
+    [
+      "--timbre-color-ink-muted",
+      "#625f57",
+      "#b3ab9f",
+      "Helper text, captions, placeholders, on canvas, surface and surface-muted.",
+    ],
+  ]}
+/>
+
+## Action
+
+<ColorTable
+  rows={[
+    [
+      "--timbre-color-primary",
+      "#a8543b",
+      "#e8957a",
+      "Primary action fill and selected state; as text, on canvas and surface.",
+    ],
+    ["--timbre-color-primary-hover", "#91452f", "#f0ad96", "Primary action on hover and press."],
+    [
+      "--timbre-color-primary-soft",
+      "#faeee8",
+      "#3d2820",
+      "Tinted background behind primary text (soft badge, selected row).",
+    ],
+    [
+      "--timbre-color-on-primary",
+      "#fffdf9",
+      "#1c1a17",
+      "Text and icons on a primary fill: light in the light theme, dark in the dark theme.",
+    ],
+  ]}
+/>
+
+## Pastels
+
+<ColorTable
+  rows={[
+    [
+      "--timbre-color-sage-soft",
+      "#e4ecdf",
+      "#263022",
+      "Success and informational surfaces; behind sage-ink.",
+    ],
+    [
+      "--timbre-color-sage-ink",
+      "#46603a",
+      "#a9c29b",
+      "Success text and icons, on sage-soft, surface and canvas.",
+    ],
+    [
+      "--timbre-color-lavender-soft",
+      "#eee8f7",
+      "#2c2738",
+      "Highlighted or new surfaces; behind lavender-ink.",
+    ],
+    [
+      "--timbre-color-lavender-ink",
+      "#5e4b8a",
+      "#bfb0dc",
+      "Text on lavender-soft, surface and canvas.",
+    ],
+    ["--timbre-color-butter-soft", "#f8efcf", "#352f1c", "Warning surfaces; behind butter-ink."],
+    [
+      "--timbre-color-butter-ink",
+      "#6e5612",
+      "#e9cf7a",
+      "Warning text and icons, on butter-soft, surface and canvas.",
+    ],
+    [
+      "--timbre-color-sky-soft",
+      "#e5eef4",
+      "#212c33",
+      "Neutral information surfaces; behind sky-ink.",
+    ],
+    [
+      "--timbre-color-sky-ink",
+      "#355e7c",
+      "#a6c3d8",
+      "Information text, on sky-soft, surface and canvas.",
+    ],
+  ]}
+/>
+
+## Status, focus and overlay
+
+<ColorTable
+  rows={[
+    [
+      "--timbre-color-danger",
+      "#a8281d",
+      "#f0a39a",
+      "Errors: field border, error text and icon; on canvas, surface and danger-soft.",
+    ],
+    [
+      "--timbre-color-danger-fill",
+      "#a8281d",
+      "#c4382b",
+      "Destructive button fill. In the dark theme it stays deep red, so it never looks like the light primary fill.",
+    ],
+    [
+      "--timbre-color-danger-soft",
+      "#f8e1de",
+      "#3e1f1b",
+      "Error message backgrounds; behind danger.",
+    ],
+    [
+      "--timbre-color-on-danger",
+      "#fffdf9",
+      "#fffdf9",
+      "Text on danger-fill (the destructive button label).",
+    ],
+    [
+      "--timbre-color-focus",
+      "#526bb1",
+      "#9fb2e8",
+      "Keyboard focus ring; the only blue in the system, so focus never looks like a brand colour.",
+    ],
+    [
+      "--timbre-color-scrim",
+      "#1c1a1766",
+      "#000000a6",
+      "Overlay behind dialogs; dims the page without hiding it.",
+    ],
+  ]}
+/>
+
+## Primitives
+
+The semantic tokens point to a private palette, the primitives (`--_timbre-*`). Components and apps never use them: they can change in any release.
