@@ -1,0 +1,62 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Spacing and shape" />
+
+export const Bar = ({ token }) => (
+  <div
+    style={{
+      width: `var(${token})`,
+      height: 16,
+      borderRadius: 2,
+      background: "var(--timbre-color-primary)",
+    }}
+  />
+);
+
+export const RadiusBox = ({ token }) => (
+  <div
+    style={{
+      width: 96,
+      height: 64,
+      borderRadius: `var(${token})`,
+      background: "var(--timbre-color-primary-soft)",
+      border: "1.5px solid var(--timbre-color-primary)",
+    }}
+  />
+);
+
+# Spacing and shape
+
+A 4px spacing scale, four radii and three control heights.
+
+## Spacing
+
+| Token              | Value | Use it for                                                 | Size                             |
+| ------------------ | ----- | ---------------------------------------------------------- | -------------------------------- |
+| `--timbre-space-1` | 4px   | Icon-to-label gap inside small controls.                   | <Bar token="--timbre-space-1" /> |
+| `--timbre-space-2` | 8px   | Icon-to-label gap in buttons; gap between label and field. | <Bar token="--timbre-space-2" /> |
+| `--timbre-space-3` | 12px  | Input inner padding; gap between related controls.         | <Bar token="--timbre-space-3" /> |
+| `--timbre-space-4` | 16px  | Button inner padding; gap between form rows.               | <Bar token="--timbre-space-4" /> |
+| `--timbre-space-6` | 24px  | Card and dialog padding.                                   | <Bar token="--timbre-space-6" /> |
+| `--timbre-space-8` | 32px  | Between sections of a page.                                | <Bar token="--timbre-space-8" /> |
+
+## Radius
+
+| Token                     | Value  | Use it for                             | Shape                                         |
+| ------------------------- | ------ | -------------------------------------- | --------------------------------------------- |
+| `--timbre-radius-sm`      | 6px    | Small elements: tags, menu items.      | <RadiusBox token="--timbre-radius-sm" />      |
+| `--timbre-radius-control` | 10px   | Buttons, inputs, selects.              | <RadiusBox token="--timbre-radius-control" /> |
+| `--timbre-radius-card`    | 16px   | Cards, panels, dialogs.                | <RadiusBox token="--timbre-radius-card" />    |
+| `--timbre-radius-pill`    | 9999px | Badges, switches, fully rounded pills. | <RadiusBox token="--timbre-radius-pill" />    |
+
+## Control heights
+
+Every interactive control uses one of three heights, so controls line up in a row.
+
+| Token                 | Value | Use it for                                 |
+| --------------------- | ----- | ------------------------------------------ |
+| `--timbre-control-sm` | 32px  | Dense layouts: toolbars, tables.           |
+| `--timbre-control-md` | 40px  | The default size.                          |
+| `--timbre-control-lg` | 48px  | Prominent actions and touch-first layouts. |
+
+At 32px, the small size still meets the [WCAG 2.2 target size minimum](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html) of 24 × 24 pixels.

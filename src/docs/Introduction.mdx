@@ -1,0 +1,64 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Introduction" />
+
+# Timbre
+
+An open source React component library: rigorous code underneath, creative freedom on top.
+
+In sound, timbre is what makes the same note sound different on a piano and on a violin. Timbre components work the same way: identical behaviour and accessibility, a different character through the theme.
+
+## Principles
+
+| Principle                  | What it means                                                                        |
+| -------------------------- | ------------------------------------------------------------------------------------ |
+| **Simple**                 | One way to do each thing. A component does its job and nothing else.                 |
+| **Thoughtful**             | Every state is designed: hover, focus, disabled, loading, error, empty, long text.   |
+| **Human**                  | Warm surfaces, plain words, generous spacing. Nothing shouts.                        |
+| **Accessible by contract** | WCAG 2.2 AA in every theme. Keyboard and screen reader behaviour is part of the API. |
+
+## Installation
+
+```bash
+pnpm add timbre-ui
+```
+
+Timbre needs React 19.
+
+## Quick start
+
+Import the stylesheet once, at the entry point of your app:
+
+```ts
+import "timbre-ui/styles.css";
+```
+
+Then use the components:
+
+```tsx
+import { Button } from "timbre-ui";
+
+export function SaveBar() {
+  return <Button variant="primary">Save changes</Button>;
+}
+```
+
+Without a `data-theme` attribute, Timbre follows the user's system preference for light or dark. See [Theming](?path=/docs/foundations-theming--docs) to choose a theme or apply your brand.
+
+## Font
+
+Timbre is designed with [Instrument Sans](https://fontsource.org/fonts/instrument-sans), but does not ship font files: your app decides how to load it. With Fontsource:
+
+```bash
+pnpm add @fontsource-variable/instrument-sans
+```
+
+```ts
+import "@fontsource-variable/instrument-sans";
+```
+
+Without the font, Timbre falls back to the system sans-serif.
+
+## Status
+
+Timbre is in development. Version 0.1 contains Button and TextField, with light and dark themes, tests and accessibility checks.

@@ -1,0 +1,38 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Guides/Component guidelines" />
+
+# Component guidelines
+
+The rules every Timbre component follows, so that all of them feel like one library.
+
+## API
+
+| Rule                                     | Example                                                                                                                       |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Forward native props to the main element | `<Button type="submit" form="settings">` works like a `<button>`                                                              |
+| Forward `ref`                            | `ref` reaches the native element, for focus management                                                                        |
+| Merge `className`, never replace it      | Your class is added to Timbre's, so both apply                                                                                |
+| Variants are values, not booleans        | `variant="secondary"`, not `secondary`                                                                                        |
+| States are data attributes               | `data-variant="primary"` for values, `data-loading` (present or absent) for on/off states: stable hooks for styling and tests |
+| Inputs work controlled and uncontrolled  | `value` + `onChange`, or `defaultValue` alone                                                                                 |
+| Complex patterns use compound components | `Dialog.Trigger`, `Dialog.Content`                                                                                            |
+
+## Styles
+
+- Component styles are [CSS Modules](https://github.com/css-modules/css-modules) inside the `timbre.components` layer.
+- Only semantic tokens: no hex values, no primitives, no magic numbers.
+- Focus uses `:focus-visible` and `--timbre-focus-ring`.
+
+## Definition of done
+
+A component is ready only when it has all of these:
+
+- [ ] A coherent API, following the rules above
+- [ ] Styles with semantic tokens only, in `timbre.components`
+- [ ] Tests written as `play` functions in the stories: Testing Library queries by role and accessible name, interactions with user-event
+- [ ] A story for every variant and state, without accessibility violations
+- [ ] Both themes checked in Storybook
+- [ ] A manual check with the keyboard and VoiceOver
+- [ ] A documentation page in Storybook: usage, variants, examples
+- [ ] An export from `src/index.ts`

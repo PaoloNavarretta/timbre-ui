@@ -1,0 +1,45 @@
+import { Meta, Typeset } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+
+Timbre uses [Instrument Sans](https://fontsource.org/fonts/instrument-sans), a variable font from weight 400 to 700, released under the SIL Open Font License. **Weight carries hierarchy before size.**
+
+| Token                | Value                                                                                 |
+| -------------------- | ------------------------------------------------------------------------------------- |
+| `--timbre-font-sans` | `"Instrument Sans Variable", "Instrument Sans", ui-sans-serif, system-ui, sans-serif` |
+| `--timbre-font-mono` | `ui-monospace, "SF Mono", Menlo, Consolas, monospace`                                 |
+
+The library does not ship the font files. See [Introduction](?path=/docs/introduction--docs) to load the font in your app.
+
+## Type scale
+
+The scale is a design reference: the components use it internally. It is not yet exposed as tokens or classes.
+
+| Style     | Size / line height | Weight | Example                                                              |
+| --------- | ------------------ | ------ | -------------------------------------------------------------------- |
+| `display` | 36px / 44px        | 600    | Simple, thoughtful, human.                                           |
+| `title`   | 24px / 32px        | 600    | Theming without friction                                             |
+| `heading` | 18px / 26px        | 600    | Discard changes?                                                     |
+| `body`    | 15px / 24px        | 400    | The same component takes on a different character through its theme. |
+| `body-sm` | 13px / 20px        | 400    | Use at least 12 characters.                                          |
+| `label`   | 13px / 18px        | 600    | Email address                                                        |
+| `caption` | 12px / 16px        | 600    | v0.1.0 · Released                                                    |
+| `code`    | 13px / 20px        | 400    | `--timbre-color-primary` (in `--timbre-font-mono`)                   |
+
+## Sizes at a glance
+
+<Typeset
+  fontFamily="var(--timbre-font-sans)"
+  fontSizes={[36, 24, 18]}
+  fontWeight={600}
+  sampleText="The same note, a different character."
+/>
+
+<Typeset
+  fontFamily="var(--timbre-font-sans)"
+  fontSizes={[15, 13]}
+  fontWeight={400}
+  sampleText="The same note, a different character."
+/>
