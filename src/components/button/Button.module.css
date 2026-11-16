@@ -1,0 +1,89 @@
+@layer timbre.components {
+  .root {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--timbre-space-2);
+    box-sizing: border-box;
+    height: var(--timbre-control-md);
+    padding: 0 var(--timbre-space-4);
+    border: 1px solid var(--timbre-color-line-strong);
+    border-radius: var(--timbre-radius-control);
+    background: var(--timbre-color-surface);
+    color: var(--timbre-color-ink);
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background-color var(--timbre-duration-fast) var(--timbre-ease-out),
+      border-color var(--timbre-duration-fast) var(--timbre-ease-out);
+  }
+  .root:hover {
+    background: var(--timbre-color-surface-muted);
+  }
+  .root:focus-visible {
+    outline: 2px solid transparent;
+    box-shadow: var(--timbre-focus-ring);
+  }
+  .root[data-size="sm"] {
+    height: var(--timbre-control-sm);
+    padding: 0 var(--timbre-space-3);
+    font-size: 13px;
+  }
+  .root[data-size="lg"] {
+    height: var(--timbre-control-lg);
+    padding: 0 var(--timbre-space-6);
+    font-size: 16px;
+  }
+  .root[data-variant="primary"] {
+    border-color: transparent;
+    background: var(--timbre-color-primary);
+    color: var(--timbre-color-on-primary);
+  }
+  .root[data-variant="primary"]:hover {
+    background: var(--timbre-color-primary-hover);
+  }
+  .root[data-variant="ghost"] {
+    border-color: transparent;
+    background: transparent;
+    color: var(--timbre-color-primary);
+  }
+  .root[data-variant="ghost"]:hover {
+    background: var(--timbre-color-primary-soft);
+  }
+  .root[data-variant="danger"] {
+    border-color: transparent;
+    background: var(--timbre-color-danger-fill);
+    color: var(--timbre-color-on-danger);
+  }
+  .root:disabled {
+    border-color: var(--timbre-color-line);
+    background: var(--timbre-color-surface-muted);
+    color: var(--timbre-color-ink-muted);
+    cursor: not-allowed;
+  }
+  .root[data-loading] {
+    cursor: progress;
+  }
+  .spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin 700ms linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .spinner {
+      animation-duration: 2s;
+    }
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
