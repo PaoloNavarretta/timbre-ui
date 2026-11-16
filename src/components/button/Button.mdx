@@ -1,0 +1,78 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as ButtonStories from "./Button.stories";
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Triggers an action: saving a form, opening a dialog, deleting a project. It renders a native `<button>`, so keyboard, focus and form behaviour come from the browser.
+
+<Canvas of={ButtonStories.Primary} />
+
+```tsx
+import { Button } from "timbre-ui";
+
+<Button variant="primary" onClick={save}>
+  Save changes
+</Button>;
+```
+
+## Variants
+
+| Variant     | Use it for                                                                   | Example        |
+| ----------- | ---------------------------------------------------------------------------- | -------------- |
+| `primary`   | The main action of a view. One per view, so the next step is never in doubt. | Save changes   |
+| `secondary` | Every other action. The default when `variant` is not set.                   | Cancel         |
+| `ghost`     | Low-emphasis actions next to content: toolbars, inline "add" actions.        | Add field      |
+| `danger`    | Destructive actions that cannot be undone. Usually confirmed in a dialog.    | Delete project |
+
+<Canvas of={ButtonStories.Light} />
+
+## Sizes
+
+| Size | Height | Use it for                                 |
+| ---- | ------ | ------------------------------------------ |
+| `sm` | 32px   | Dense layouts: toolbars, tables.           |
+| `md` | 40px   | The default.                               |
+| `lg` | 48px   | Prominent actions and touch-first layouts. |
+
+All three meet the [WCAG 2.2 target size minimum](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html).
+
+## States
+
+### Loading
+
+Set `loading` while the action runs. The button keeps its colours, shows a spinner and ignores clicks, including form submission. It stays focusable, so keyboard and screen reader users do not lose their place, and it is announced as unavailable.
+
+Change the label to say what is happening: "Save changes" becomes "Saving".
+
+<Canvas of={ButtonStories.Loading} />
+
+### Disabled
+
+`disabled` removes the button from the tab order and greys it out. Use it sparingly: a disabled button does not say **why** it is disabled. When you can, keep the button enabled and explain the problem after the click, for example with an error next to the field that needs fixing.
+
+<Canvas of={ButtonStories.Disabled} />
+
+## Accessibility
+
+- **Name:** the visible text is the accessible name. Write the action as a verb: "Save changes", not "OK".
+- **Type:** Timbre sets `type="button"` by default, so a button inside a form never submits it by accident. Pass `type="submit"` for the submit button.
+- **Focus:** a visible focus ring on keyboard focus, also in Windows high-contrast mode.
+- **Icon-only buttons:** not supported by `Button`. A dedicated `IconButton` with a required `aria-label` is planned.
+
+## Styling hooks
+
+These attributes are public API: use them in your CSS or tests.
+
+| Attribute      | Values                                    |
+| -------------- | ----------------------------------------- |
+| `data-variant` | `primary`, `secondary`, `ghost`, `danger` |
+| `data-size`    | `sm`, `md`, `lg`                          |
+| `data-loading` | Present while `loading` is true           |
+
+`className` is merged with Timbre's own class, and every native `<button>` attribute is forwarded, `ref` included.
+
+## Props
+
+<ArgTypes of={ButtonStories} />
