@@ -21,7 +21,7 @@
       background-color var(--timbre-duration-fast) var(--timbre-ease-out),
       border-color var(--timbre-duration-fast) var(--timbre-ease-out);
   }
-  .root:hover {
+  .root:hover:not(:disabled, [data-loading]) {
     background: var(--timbre-color-surface-muted);
   }
   .root:focus-visible {
@@ -43,7 +43,7 @@
     background: var(--timbre-color-primary);
     color: var(--timbre-color-on-primary);
   }
-  .root[data-variant="primary"]:hover {
+  .root[data-variant="primary"]:hover:not(:disabled, [data-loading]) {
     background: var(--timbre-color-primary-hover);
   }
   .root[data-variant="ghost"] {
@@ -51,7 +51,7 @@
     background: transparent;
     color: var(--timbre-color-primary);
   }
-  .root[data-variant="ghost"]:hover {
+  .root[data-variant="ghost"]:hover:not(:disabled, [data-loading]) {
     background: var(--timbre-color-primary-soft);
   }
   .root[data-variant="danger"] {
