@@ -12,8 +12,8 @@
     background: var(--timbre-color-surface);
     color: var(--timbre-color-ink);
     font: inherit;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: var(--timbre-text-body-size);
+    font-weight: var(--timbre-text-label-weight);
     line-height: 1;
     white-space: nowrap;
     cursor: pointer;
@@ -31,12 +31,12 @@
   .root[data-size="sm"] {
     height: var(--timbre-control-sm);
     padding: 0 var(--timbre-space-3);
-    font-size: 13px;
+    font-size: var(--timbre-text-body-sm-size);
   }
   .root[data-size="lg"] {
     height: var(--timbre-control-lg);
     padding: 0 var(--timbre-space-6);
-    font-size: 16px;
+    font-size: var(--timbre-text-body-lg-size);
   }
   .root[data-variant="primary"] {
     border-color: transparent;

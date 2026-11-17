@@ -68,6 +68,20 @@
     --timbre-font-sans:
       "Instrument Sans Variable", "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
     --timbre-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+    --timbre-text-body-lg-size: 16px;
+    --timbre-text-body-lg-line-height: 24px;
+    --timbre-text-body-lg-weight: 400;
+    --timbre-text-body-size: 15px;
+    --timbre-text-body-line-height: 24px;
+    --timbre-text-body-weight: 400;
+    --timbre-text-body-sm-size: 13px;
+    --timbre-text-body-sm-line-height: 20px;
+    --timbre-text-body-sm-weight: 400;
+    --timbre-text-label-size: 13px;
+    --timbre-text-label-line-height: 18px;
+    --timbre-text-label-weight: 600;
+
     --timbre-duration-fast: 120ms;
     --timbre-duration-overlay: 180ms;
     --timbre-ease-out: cubic-bezier(0.2, 0, 0, 1);
