@@ -21,9 +21,6 @@
       background-color var(--timbre-duration-fast) var(--timbre-ease-out),
       border-color var(--timbre-duration-fast) var(--timbre-ease-out);
   }
-  .root:hover:not(:disabled, [data-loading]) {
-    background: var(--timbre-color-surface-muted);
-  }
   .root:focus-visible {
     outline: 2px solid transparent;
     box-shadow: var(--timbre-focus-ring);
@@ -45,6 +42,9 @@
   }
   .root[data-variant="primary"]:hover:not(:disabled, [data-loading]) {
     background: var(--timbre-color-primary-hover);
+  }
+  .root[data-variant="secondary"]:hover:not(:disabled, [data-loading]) {
+    background: var(--timbre-color-surface-muted);
   }
   .root[data-variant="ghost"] {
     border-color: transparent;
