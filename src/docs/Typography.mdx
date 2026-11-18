@@ -1,4 +1,7 @@
+{/* Doc blocks are React components provided by Storybook for docs pages. */}
 import { Meta, Typeset } from "@storybook/addon-docs/blocks";
+
+{/* Renders nothing: it places this page in the sidebar under Foundations. */}
 
 <Meta title="Foundations/Typography" />
 
@@ -15,13 +18,26 @@ The library does not ship the font files. See [Introduction](?path=/docs/introdu
 
 ## Type scale
 
-The scale is a design reference: the components use it internally. It is not yet exposed as tokens or classes.
+Every style is available as public tokens: `--timbre-text-{style}-size`, `-line-height` and `-weight`. `display`, `title` and `caption` also have `-tracking`, their letter spacing.
+
+```css
+.my-label {
+  font-size: var(--timbre-text-label-size);
+  line-height: var(--timbre-text-label-line-height);
+  font-weight: var(--timbre-text-label-weight);
+}
+```
+
+A component can mix styles: Button uses the size of `body` with the weight of `label`.
+
+{/* Keep this table in sync with the --timbre-text-* tokens in src/styles/tokens.css. */}
 
 | Style     | Size / line height | Weight | Example                                                              |
 | --------- | ------------------ | ------ | -------------------------------------------------------------------- |
 | `display` | 36px / 44px        | 600    | Simple, thoughtful, human.                                           |
 | `title`   | 24px / 32px        | 600    | Theming without friction                                             |
 | `heading` | 18px / 26px        | 600    | Discard changes?                                                     |
+| `body-lg` | 16px / 24px        | 400    | A calmer way to build interfaces.                                    |
 | `body`    | 15px / 24px        | 400    | The same component takes on a different character through its theme. |
 | `body-sm` | 13px / 20px        | 400    | Use at least 12 characters.                                          |
 | `label`   | 13px / 18px        | 600    | Email address                                                        |
@@ -29,6 +45,8 @@ The scale is a design reference: the components use it internally. It is not yet
 | `code`    | 13px / 20px        | 400    | `--timbre-color-primary` (in `--timbre-font-mono`)                   |
 
 ## Sizes at a glance
+
+{/* Two previews, because Typeset applies one weight to every size: 600 for headings, 400 for text. */}
 
 <Typeset
   fontFamily="var(--timbre-font-sans)"
@@ -39,7 +57,7 @@ The scale is a design reference: the components use it internally. It is not yet
 
 <Typeset
   fontFamily="var(--timbre-font-sans)"
-  fontSizes={[15, 13]}
+  fontSizes={[16, 15, 13]}
   fontWeight={400}
   sampleText="The same note, a different character."
 />
