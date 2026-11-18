@@ -69,6 +69,18 @@
       "Instrument Sans Variable", "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
     --timbre-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
+    --timbre-text-display-size: 36px;
+    --timbre-text-display-line-height: 44px;
+    --timbre-text-display-weight: 600;
+    --timbre-text-display-tracking: -0.02em;
+    --timbre-text-title-size: 24px;
+    --timbre-text-title-line-height: 32px;
+    --timbre-text-title-weight: 600;
+    --timbre-text-title-tracking: -0.01em;
+    --timbre-text-heading-size: 18px;
+    --timbre-text-heading-line-height: 26px;
+    --timbre-text-heading-weight: 600;
+
     --timbre-text-body-lg-size: 16px;
     --timbre-text-body-lg-line-height: 24px;
     --timbre-text-body-lg-weight: 400;
@@ -81,6 +93,14 @@
     --timbre-text-label-size: 13px;
     --timbre-text-label-line-height: 18px;
     --timbre-text-label-weight: 600;
+
+    --timbre-text-caption-size: 12px;
+    --timbre-text-caption-line-height: 16px;
+    --timbre-text-caption-weight: 600;
+    --timbre-text-caption-tracking: 0.01em;
+    --timbre-text-code-size: 13px;
+    --timbre-text-code-line-height: 20px;
+    --timbre-text-code-weight: 400;
 
     --timbre-duration-fast: 120ms;
     --timbre-duration-overlay: 180ms;
