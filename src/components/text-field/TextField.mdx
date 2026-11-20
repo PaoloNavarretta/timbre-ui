@@ -1,0 +1,61 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as TextFieldStories from "./TextField.stories";
+
+{/* Attached to the stories: this page is the Docs entry under Components → TextField. */}
+
+<Meta of={TextFieldStories} />
+
+# TextField
+
+A single-line text input with a visible label. It renders a native `<input>`, so typing, autofill, form submission and validation attributes come from the browser.
+
+<Canvas of={TextFieldStories.Default} />
+
+```tsx
+import { TextField } from "timbre-ui";
+
+<TextField
+  label="Project name"
+  description="Visible to everyone in the workspace."
+  name="project"
+  required
+/>;
+```
+
+Use it controlled (`value` and `onChange`) or uncontrolled (`defaultValue`), like a native `<input>`.
+
+## Description and error
+
+Add a `description` when people need a hint before they type: a format, a limit, who can see the value.
+
+<Canvas of={TextFieldStories.WithDescription} />
+
+Set `error` when the value cannot be accepted. The field gets a red border and the message appears under the description. Write the message as the fix, not as the problem: "Enter a project name.", not "Invalid value".
+
+<Canvas of={TextFieldStories.WithError} />
+
+## States
+
+`disabled` means the field cannot be edited or focused, and its value is not sent with the form. Use it sparingly: a disabled field does not say why it cannot be changed. When the value is just wrong, keep the field enabled and show an `error` instead.
+
+<Canvas of={TextFieldStories.Disabled} />
+
+## Accessibility
+
+- **Label:** `label` is required. It is linked to the input, so it becomes the accessible name, and clicking it focuses the field. A placeholder is not a label: it disappears as soon as people type.
+- **Description and error:** both are linked with `aria-describedby`, so screen readers read them after the name, description first. An `aria-describedby` you pass yourself is kept and read before them.
+- **Invalid state:** with an `error`, the input gets `aria-invalid="true"`, announced as invalid. The error icon is decorative and hidden from screen readers.
+- **Focus:** a visible focus ring on keyboard focus, also in Windows high-contrast mode.
+
+## Styling hooks
+
+| Attribute or prop | Where                                   | Use it for                                 |
+| ----------------- | --------------------------------------- | ------------------------------------------ |
+| `data-invalid`    | The wrapper, while `error` is set       | Styling the whole field in its error state |
+| `className`       | The wrapper (label, input and messages) | Layout: width, grid placement, spacing     |
+
+Every other prop, `ref` included, goes to the native `<input>`.
+
+## Props
+
+<ArgTypes of={TextFieldStories} />
