@@ -21,7 +21,6 @@ export function Button({
   className,
   onClick,
   children,
-  ref,
   ...props
 }: ButtonProps) {
   function handleClick(event: MouseEvent<HTMLButtonElement>) {
@@ -35,7 +34,6 @@ export function Button({
   return (
     <button
       {...props}
-      ref={ref}
       type={type}
       className={[styles.root, className].filter(Boolean).join(" ")}
       data-variant={variant}
