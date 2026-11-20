@@ -77,11 +77,11 @@ Tokens prefixed with `--_timbre-` are private and can change in any release.
 
 ## Components
 
-| Component   | Status         |
-| ----------- | -------------- |
-| `Button`    | Ready          |
-| `TextField` | In development |
-| `Dialog`    | Planned        |
+| Component   | Status  |
+| ----------- | ------- |
+| `Button`    | Ready   |
+| `TextField` | Ready   |
+| `Dialog`    | Planned |
 
 ## How it is built
 

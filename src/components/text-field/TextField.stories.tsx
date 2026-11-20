@@ -127,3 +127,8 @@ export const Controlled: Story = {
     await expect(textField).toHaveValue("Design review");
   },
 };
+
+export const Dark: Story = {
+  globals: { theme: "dark" },
+  args: { description: "Visible to everyone in the workspace.", error: "Enter a project name." },
+};
