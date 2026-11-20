@@ -37,3 +37,30 @@ export const WithDescription: Story = {
     await expect(textField).toHaveAccessibleDescription("Visible to everyone in the workspace.");
   },
 };
+
+export const KeepsAppDescription: Story = {
+  args: { "aria-describedby": "app-hint", description: "Visible to everyone in the workspace." },
+  render: (args) => (
+    <>
+      <TextField {...args} />
+      <p id="app-hint">Max 40 characters.</p>
+    </>
+  ),
+  play: async ({ canvas }) => {
+    await expect(canvas.getByRole("textbox")).toHaveAccessibleDescription(
+      "Max 40 characters. Visible to everyone in the workspace.",
+    );
+  },
+};
+
+export const WithError: Story = {
+  args: { description: "Visible to everyone in the workspace.", error: "Enter a project name." },
+  play: async ({ canvas }) => {
+    const textField = canvas.getByRole("textbox", { name: "Project name" });
+
+    await expect(textField).toHaveAttribute("aria-invalid", "true");
+    await expect(textField).toHaveAccessibleDescription(
+      "Visible to everyone in the workspace. Enter a project name.",
+    );
+  },
+};
