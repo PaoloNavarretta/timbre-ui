@@ -15,6 +15,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   play: async ({ canvas }) => {
     const textField = canvas.getByRole("textbox", { name: "Project name" });
+
     await expect(textField).toBeInTheDocument();
   },
 };
@@ -23,6 +24,16 @@ export const Password: Story = {
   args: { label: "Password", type: "password" },
   play: async ({ canvas }) => {
     const textField = canvas.getByLabelText("Password");
+
     await expect(textField).toHaveAttribute("type", "password");
+  },
+};
+
+export const WithDescription: Story = {
+  args: { description: "Visible to everyone in the workspace." },
+  play: async ({ canvas }) => {
+    const textField = canvas.getByRole("textbox", { name: "Project name" });
+
+    await expect(textField).toHaveAccessibleDescription("Visible to everyone in the workspace.");
   },
 };
