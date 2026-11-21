@@ -13,7 +13,8 @@
     "test:watch": "vitest",
     "build": "vite build && tsc -p tsconfig.build.json",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "icons": "node scripts/generate-icons.ts && prettier --write src/icons"
   },
   "exports": {
     ".": {
