@@ -52,6 +52,8 @@ The API rules and the reasons behind them are in Storybook, under **Guides → C
 
 Tests are written as `play` functions in the stories, with the Testing Library queries and user-event re-exported by `storybook/test`. Find elements by role and accessible name. Stories that exist only as tests carry `tags: ["!dev", "!autodocs"]`, so they stay out of the sidebar but still run. Every story is also checked with axe, and an accessibility violation fails the test.
 
+How the tools fit together, how to decide what to test and what the tests cannot see are in [docs/testing.md](./docs/testing.md).
+
 ## Definition of done
 
 A component is ready only when it has all of these:
