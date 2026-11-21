@@ -15,6 +15,8 @@ type Story = StoryObj<typeof meta>;
 /** Hidden from the sidebar and the Docs page: these stories exist only as tests. */
 const testOnly = ["!dev", "!autodocs"];
 
+// States
+
 export const Default: Story = {
   play: async ({ canvas }) => {
     const textField = canvas.getByRole("textbox", { name: "Project name" });
@@ -41,7 +43,71 @@ export const WithDescription: Story = {
   },
 };
 
+export const WithError: Story = {
+  args: { description: "Visible to everyone in the workspace.", error: "Enter a project name." },
+  play: async ({ canvas }) => {
+    const textField = canvas.getByRole("textbox", { name: "Project name" });
+
+    await expect(textField).toHaveAttribute("aria-invalid", "true");
+    await expect(textField).toHaveAccessibleDescription(
+      "Visible to everyone in the workspace. Enter a project name.",
+    );
+  },
+};
+
+export const Disabled: Story = {
+  args: { defaultValue: "Design review", disabled: true },
+  play: async ({ canvas, userEvent }) => {
+    const textField = canvas.getByRole("textbox", { name: "Project name" });
+
+    await userEvent.type(textField, " notes");
+
+    await expect(textField).toBeDisabled();
+    await expect(textField).toHaveValue("Design review");
+  },
+};
+
+/** Long texts must wrap, also at 200% zoom. */
+export const LongContent: Story = {
+  args: {
+    label: "Name of the project as it appears in invoices and reports",
+    description:
+      "Shown on every document we send. You can change it later, but past documents keep the old name.",
+    error: "This name is already used by another project in your workspace.",
+  },
+};
+
+// Overview
+
+function TextFieldGallery() {
+  return (
+    <div style={{ display: "grid", gap: "var(--timbre-space-6)", maxWidth: 320 }}>
+      <TextField label="Project name" placeholder="e.g. Design review" />
+      <TextField label="Project name" description="Visible to everyone in the workspace." />
+      <TextField
+        label="Project name"
+        description="Visible to everyone in the workspace."
+        error="Enter a project name."
+      />
+      <TextField label="Project name" defaultValue="Design review" disabled />
+    </div>
+  );
+}
+
+export const Overview: Story = {
+  render: () => <TextFieldGallery />,
+};
+
+/** Forces the dark theme, so the a11y checks cover every state in it. */
+export const OverviewDark: Story = {
+  globals: { theme: "dark" },
+  render: () => <TextFieldGallery />,
+};
+
+// Tests
+
 export const KeepsAppDescription: Story = {
+  tags: testOnly,
   args: { "aria-describedby": "app-hint", description: "Visible to everyone in the workspace." },
   render: (args) => (
     <>
@@ -55,20 +121,6 @@ export const KeepsAppDescription: Story = {
     );
   },
 };
-
-export const WithError: Story = {
-  args: { description: "Visible to everyone in the workspace.", error: "Enter a project name." },
-  play: async ({ canvas }) => {
-    const textField = canvas.getByRole("textbox", { name: "Project name" });
-
-    await expect(textField).toHaveAttribute("aria-invalid", "true");
-    await expect(textField).toHaveAccessibleDescription(
-      "Visible to everyone in the workspace. Enter a project name.",
-    );
-  },
-};
-
-// Test-only stories: the API contract
 
 export const ClassNameOnWrapper: Story = {
   tags: testOnly,
@@ -103,18 +155,6 @@ export const ForwardsRef: Story = {
   },
 };
 
-export const Disabled: Story = {
-  args: { defaultValue: "Design review", disabled: true },
-  play: async ({ canvas, userEvent }) => {
-    const textField = canvas.getByRole("textbox", { name: "Project name" });
-
-    await userEvent.type(textField, " notes");
-
-    await expect(textField).toBeDisabled();
-    await expect(textField).toHaveValue("Design review");
-  },
-};
-
 export const Controlled: Story = {
   tags: testOnly,
   args: { value: "Design review", onChange: fn() },
@@ -126,9 +166,4 @@ export const Controlled: Story = {
     await expect(args.onChange).toHaveBeenCalled();
     await expect(textField).toHaveValue("Design review");
   },
-};
-
-export const Dark: Story = {
-  globals: { theme: "dark" },
-  args: { description: "Visible to everyone in the workspace.", error: "Enter a project name." },
 };
