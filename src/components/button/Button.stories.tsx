@@ -106,9 +106,9 @@ export const LongLabel: Story = {
   args: { children: "Save changes and notify everyone in the project" },
 };
 
-// Both themes, every variant and state at once
+// Overview
 
-function AllStates() {
+function ButtonGallery() {
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--timbre-space-3)" }}>
       <Button variant="primary">Save changes</Button>
@@ -125,17 +125,17 @@ function AllStates() {
   );
 }
 
-export const Light: Story = {
-  globals: { theme: "light" },
-  render: () => <AllStates />,
+export const Overview: Story = {
+  render: () => <ButtonGallery />,
 };
 
-export const Dark: Story = {
+/** Forces the dark theme, so the a11y checks cover every state in it. */
+export const OverviewDark: Story = {
   globals: { theme: "dark" },
-  render: () => <AllStates />,
+  render: () => <ButtonGallery />,
 };
 
-// Test-only stories: the API contract
+// Tests
 
 export const KeyboardActivation: Story = {
   tags: testOnly,
