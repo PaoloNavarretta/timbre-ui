@@ -4,7 +4,7 @@ A warm, accessible React component library: rigorous code underneath, creative f
 
 In sound, timbre is what makes the same note sound different on a piano and on a violin. Timbre components work the same way: the same behaviour and accessibility, a different character through the theme.
 
-> **Status:** in development. Version 0.1 (Button and TextField) is planned for December 2026. The live Storybook link will appear here with the first release.
+> **Status:** in development. Version 0.1 (Button, TextField, icons and IconButton) is planned for December 2026. The live Storybook link will appear here with the first release.
 
 ## Highlights
 
@@ -77,41 +77,43 @@ Tokens prefixed with `--_timbre-` are private and can change in any release.
 
 ## Components
 
-| Component   | Status  |
-| ----------- | ------- |
-| `Button`    | Ready   |
-| `TextField` | Ready   |
-| `Dialog`    | Planned |
+| Component    | Status      |
+| ------------ | ----------- |
+| `Button`     | Ready       |
+| `TextField`  | Ready       |
+| Icons        | In progress |
+| `IconButton` | Planned     |
+| `Dialog`     | Planned     |
 
 ## How it is built
 
-| Area          | Choice                                                                                          |
-| ------------- | ----------------------------------------------------------------------------------------------- |
-| Language      | TypeScript in strict mode                                                                       |
-| Build         | Vite in library mode: ES modules, type declarations, one `styles.css`                           |
-| Styles        | CSS Modules and custom properties inside the `timbre.*` cascade layers                          |
-| Tests         | Storybook stories as tests: Vitest runs every story in Chromium, with interaction tests and axe |
-| Docs          | Storybook, with MDX pages for foundations and guides                                            |
-| Quality gates | Prettier, ESLint (with JSX accessibility rules), type checks, tests and both builds in CI       |
+| Area          | Choice                                                                                                                   |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Language      | TypeScript in strict mode                                                                                                |
+| Build         | Vite in library mode: ES modules, two entry points (`timbre-ui`, `timbre-ui/icons`), type declarations, one `styles.css` |
+| Styles        | CSS Modules and custom properties inside the `timbre.*` cascade layers                                                   |
+| Tests         | Storybook stories as tests: Vitest runs every story in Chromium, with interaction tests and axe                          |
+| Docs          | Storybook, with MDX pages for foundations and guides                                                                     |
+| Quality gates | Prettier, ESLint (with JSX accessibility rules), type checks, tests and both builds in CI                                |
 
-The reasoning behind the main choices is recorded in [docs/decisions](./docs/decisions/README.md).
+Every tool, what it does and where it is configured: [docs/stack.md](./docs/stack.md). The reasoning behind the main choices is recorded in [docs/decisions](./docs/decisions/README.md).
 
 ## Development
 
 You need Node 26 and pnpm (enabled through Corepack).
 
-```bash
-pnpm install
-pnpm storybook      # components and docs at http://localhost:6006
-pnpm test           # every story as a test, in Chromium
-pnpm build          # the library in dist/
-```
+| Command          | What it does                                   |
+| ---------------- | ---------------------------------------------- |
+| `pnpm install`   | Installs the dependencies                      |
+| `pnpm storybook` | Components and docs at `http://localhost:6006` |
+| `pnpm test`      | Every story as a test, in Chromium             |
+| `pnpm build`     | The library in `dist/`                         |
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for the workflow and the definition of done.
 
 ## Roadmap
 
-1. **v0.1:** Button, TextField, light and dark themes, Storybook online, npm package.
+1. **v0.1:** Button, TextField, icons and IconButton, light and dark themes, Storybook online, npm package.
 2. **Next:** Dialog, built on a headless library chosen with a prototype; then Popover, Tooltip, Menu, Tabs and Select.
 3. **Later:** a separate package of web components built on native elements.
 
