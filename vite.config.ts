@@ -7,9 +7,11 @@ export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: "src/library.ts",
+      entry: {
+        index: "src/library.ts",
+        icons: "src/icons/index.ts",
+      },
       formats: ["es"],
-      fileName: "index",
       cssFileName: "styles",
     },
     cssTarget: ["chrome123", "edge123", "firefox120", "safari17.5"],
