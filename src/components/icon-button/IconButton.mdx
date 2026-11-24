@@ -1,0 +1,73 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as IconButtonStories from "./IconButton.stories";
+
+{/* Attached to the stories: this page is the Docs entry under Components → IconButton. */}
+
+<Meta of={IconButtonStories} />
+
+# IconButton
+
+A square button that shows only an icon: search, close, delete. It is a [Button](?path=/docs/components-button--docs) underneath, so variants, sizes, focus, keyboard and form behaviour are the same.
+
+<Canvas of={IconButtonStories.Default} />
+
+```tsx
+import { IconButton } from "timbre-ui";
+import { SearchIcon } from "timbre-ui/icons";
+
+<IconButton aria-label="Search" onClick={openSearch}>
+  <SearchIcon />
+</IconButton>;
+```
+
+## The name is required
+
+An icon has no text, so `aria-label` is the button's only accessible name: screen readers announce "Search, button". Without it they would say only "button", so TypeScript does not compile an `IconButton` without `aria-label`.
+
+TypeScript cannot check what the label says. Write the action, as for a `Button`: "Delete project", not "Trash" or "Icon". An empty `aria-label=""` compiles, but it leaves the button without a name, and the accessibility tests fail.
+
+The label is not visible. When the meaning of an icon is not obvious to everyone, prefer a `Button` with text.
+
+## Variants
+
+The same four as `Button`, with the same rules: one `primary` per view, `danger` for destructive actions.
+
+<Canvas of={IconButtonStories.Overview} />
+
+## Sizes
+
+The button sets its own size; the icon keeps the size you give it. Use these pairs:
+
+| Size | Button | Icon                                 |
+| ---- | ------ | ------------------------------------ |
+| `sm` | 32px   | `<SearchIcon size={16} />`           |
+| `md` | 40px   | `<SearchIcon />` (20px, the default) |
+| `lg` | 48px   | `<SearchIcon size={24} />`           |
+
+<Canvas of={IconButtonStories.Small} />
+
+All three meet the [WCAG 2.2 target size minimum](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html).
+
+## Not supported
+
+- **`loading`:** a spinner and an icon do not fit in the square. While an action runs, use `disabled`, or a `Button` with `loading`.
+
+## Accessibility
+
+- **Name:** `aria-label`, required. The icon inside stays decorative (`aria-hidden`), so it is not announced twice.
+- **Type:** `type="button"` by default, as in `Button`.
+- **Focus:** the same visible focus ring as `Button`.
+
+## Styling hooks
+
+The same attributes as `Button` (`data-variant`, `data-size`), plus one set by `IconButton` itself:
+
+| Attribute        | Values                                  |
+| ---------------- | --------------------------------------- |
+| `data-icon-only` | Always present: makes the button square |
+
+`className` is merged with Timbre's own class, and every native `<button>` attribute is forwarded, `ref` included.
+
+## Props
+
+<ArgTypes of={IconButtonStories} />
