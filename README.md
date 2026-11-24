@@ -82,7 +82,7 @@ Tokens prefixed with `--_timbre-` are private and can change in any release.
 | `Button`     | Ready       |
 | `TextField`  | Ready       |
 | Icons        | In progress |
-| `IconButton` | Planned     |
+| `IconButton` | Ready       |
 | `Dialog`     | Planned     |
 
 ## How it is built

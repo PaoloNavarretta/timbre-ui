@@ -35,6 +35,10 @@
     padding: 0 var(--timbre-space-6);
     font-size: var(--timbre-text-body-lg-size);
   }
+  .root[data-icon-only] {
+    aspect-ratio: 1; /* square at every size: width follows the height */
+    padding: 0;
+  }
   .root[data-variant="primary"] {
     border-color: transparent;
     background: var(--timbre-color-primary);
