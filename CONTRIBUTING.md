@@ -11,6 +11,8 @@ Thank you for your interest. This guide explains how the project is set up and w
 
 ## Scripts
 
+What each tool does and where it is configured is in [docs/stack.md](./docs/stack.md).
+
 | Script                 | What it does                                              |
 | ---------------------- | --------------------------------------------------------- |
 | `pnpm storybook`       | Storybook in development mode, at `http://localhost:6006` |
