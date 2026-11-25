@@ -1,4 +1,71 @@
 @layer timbre.components {
+  /* The label: box and text in a row. Colour and type come from tokens,
+     because the library does not style body. */
   .root {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--timbre-space-2);
+    cursor: pointer;
+    color: var(--timbre-color-ink);
+    font-size: var(--timbre-text-body-size);
+    line-height: var(--timbre-text-body-line-height);
+  }
+
+  /* The box. appearance: none stops the browser drawing its own checkbox,
+     but the input keeps its behaviour: click, Space, forms, screen readers. */
+  .input {
+    appearance: none;
+    margin: 0;
+    flex: none; /* keeps the box square when the label wraps */
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--timbre-color-line-strong);
+    border-radius: var(--timbre-radius-sm);
+    background: var(--timbre-color-surface);
+    cursor: pointer;
+    display: inline-grid;
+    place-content: center; /* centres the tick */
+  }
+
+  /* The tick: a small square cut into a tick shape by clip-path.
+     Hidden at scale 0 until the box is checked. */
+  .input::before {
+    content: ""; /* without content, ::before is not rendered */
+    width: 12px;
+    height: 12px;
+    clip-path: polygon(14% 52%, 0 66%, 38% 100%, 100% 22%, 86% 8%, 37% 70%);
+    background: var(--timbre-color-on-primary);
+    transform: scale(0);
+  }
+
+  /* Checked: the box fills with the primary colour and the tick appears. */
+  .input:checked {
+    border-color: var(--timbre-color-primary);
+    background: var(--timbre-color-primary);
+  }
+
+  .input:checked::before {
+    transform: scale(1);
+  }
+
+  /* A11Y: keyboard focus. The transparent outline stays visible in forced
+     colours mode, where box-shadow is removed. Same as Button. */
+  .input:focus-visible {
+    outline: 2px solid transparent;
+    box-shadow: var(--timbre-focus-ring);
+  }
+
+  /* Disabled: a muted box, and :has() greys out the label around it,
+     so the component needs no extra attribute. */
+  .input:disabled {
+    border-color: var(--timbre-color-line);
+    background: var(--timbre-color-surface-muted);
+    cursor: not-allowed;
+  }
+
+  .root:has(.input:disabled) {
+    color: var(--timbre-color-ink-muted);
+    cursor: not-allowed;
   }
 }

@@ -11,7 +11,7 @@ export interface CheckboxProps extends Omit<ComponentPropsWithRef<"input">, "cla
 export function Checkbox({ label, className, ...props }: CheckboxProps) {
   return (
     <label className={[styles.root, className].filter(Boolean).join(" ")}>
-      <input {...props} type="checkbox" />
+      <input {...props} className={styles.input} type="checkbox" />
       {label}
     </label>
   );
