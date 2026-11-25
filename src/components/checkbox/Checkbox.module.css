@@ -68,4 +68,11 @@
     color: var(--timbre-color-ink-muted);
     cursor: not-allowed;
   }
+
+  /* A11Y: a disabled box still tells whether it is checked. on-primary is
+     made for the primary fill and almost disappears on surface-muted
+     (about 1.2:1), so the tick takes the muted text colour instead. */
+  .input:checked:disabled::before {
+    background: var(--timbre-color-ink-muted);
+  }
 }

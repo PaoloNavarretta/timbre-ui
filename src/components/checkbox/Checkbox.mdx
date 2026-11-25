@@ -1,0 +1,68 @@
+import { Meta, Canvas, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as CheckboxStories from "./Checkbox.stories";
+
+{/* Attached to the stories: this page is the Docs entry under Components → Checkbox. */}
+
+<Meta of={CheckboxStories} />
+
+# Checkbox
+
+A yes-or-no choice with a visible label: "Email me updates", "Remember this device". It renders a native `<input type="checkbox">` inside a `<label>`, so clicking, the Space key and form submission come from the browser.
+
+<Canvas of={CheckboxStories.Default} />
+
+```tsx
+import { Checkbox } from "timbre-ui";
+
+<Checkbox label="Email me updates" name="updates" defaultChecked />;
+```
+
+Use it uncontrolled (`defaultChecked`) or controlled (`checked` and `onChange`), like a native checkbox. When you pass `checked`, also pass `onChange`: the box changes only when your app updates `checked`.
+
+## Checked
+
+<Canvas of={CheckboxStories.Checked} />
+
+## States
+
+`disabled` means the box cannot be changed or focused, and its value is not sent with the form. A disabled box does not say why it cannot be changed, so explain it nearby when the reason is not obvious.
+
+<Canvas of={CheckboxStories.Disabled} />
+
+A disabled box still shows whether it is checked, so people can see a setting they cannot change. All four states together:
+
+<Canvas of={CheckboxStories.Overview} />
+
+## Groups
+
+For several related choices ("Notify me about: comments, mentions, releases"), wrap the checkboxes in a `<fieldset>` with a `<legend>`. Screen readers then announce the question before each choice.
+
+```tsx
+<fieldset>
+  <legend>Notify me about</legend>
+  <Checkbox label="Comments" name="notify" value="comments" />
+  <Checkbox label="Mentions" name="notify" value="mentions" />
+</fieldset>
+```
+
+## Not supported
+
+- **Indeterminate (the "some selected" dash):** not in this version.
+
+## Accessibility
+
+- **Label:** `label` is required. The input sits inside the `<label>`, so the browser links them without an `id`: the text becomes the accessible name, and clicking it toggles the box. Screen readers announce the name, the role and whether it is checked.
+- **Keyboard:** Tab moves to the box, Space toggles it.
+- **Focus:** a visible focus ring on keyboard focus, also in Windows high-contrast mode.
+
+## Styling hooks
+
+| Prop        | Where                              | Use it for                      |
+| ----------- | ---------------------------------- | ------------------------------- |
+| `className` | The outer `<label>` (box and text) | Layout: grid placement, spacing |
+
+Every other prop, `ref` included, goes to the native `<input>`. `type` is always `checkbox` and cannot be changed.
+
+## Props
+
+<ArgTypes of={CheckboxStories} />
