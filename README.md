@@ -4,7 +4,7 @@ A warm, accessible React component library: rigorous code underneath, creative f
 
 In sound, timbre is what makes the same note sound different on a piano and on a violin. Timbre components work the same way: the same behaviour and accessibility, a different character through the theme.
 
-> **Status:** in development. Version 0.1 (Button, TextField, icons and IconButton) is planned for December 2026. The live Storybook link will appear here with the first release.
+> **Status:** in development. Version 0.1 (Button, TextField, icons, IconButton and Checkbox) is planned for December 2026. The live Storybook link will appear here with the first release.
 
 ## Highlights
 
@@ -83,6 +83,7 @@ Tokens prefixed with `--_timbre-` are private and can change in any release.
 | `TextField`  | Ready   |
 | Icons        | Ready   |
 | `IconButton` | Ready   |
+| `Checkbox`   | Ready   |
 | `Dialog`     | Planned |
 
 ## How it is built
@@ -113,7 +114,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for the workflow and the definition of 
 
 ## Roadmap
 
-1. **v0.1:** Button, TextField, icons and IconButton, light and dark themes, Storybook online, npm package.
+1. **v0.1:** Button, TextField, icons, IconButton and Checkbox, light and dark themes, Storybook online, npm package.
 2. **Next:** Dialog, built on a headless library chosen with a prototype; then Popover, Tooltip, Menu, Tabs and Select.
 3. **Later:** a separate package of web components built on native elements.
 
