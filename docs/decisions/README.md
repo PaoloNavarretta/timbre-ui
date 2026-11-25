@@ -14,3 +14,5 @@ Short notes on the choices that shape Timbre: the context, the decision, and wha
 | 0008 | [Typography tokens](./0008-typography-tokens.md)                                                    | Accepted |
 | 0009 | [Headless primitives only for complex patterns](./0009-headless-primitives-for-complex-patterns.md) | Proposed |
 | 0010 | [Button loading state](./0010-button-loading-state.md)                                              | Accepted |
+| 0011 | [Icons as generated React components](./0011-icons-as-components.md)                                | Accepted |
+| 0012 | [IconButton](./0012-icon-button.md)                                                                 | Accepted |
