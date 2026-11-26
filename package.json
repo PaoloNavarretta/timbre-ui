@@ -49,6 +49,7 @@
     }
   },
   "devDependencies": {
+    "@changesets/cli": "^3.0.3",
     "@eslint/js": "^10.0.1",
     "@fontsource-variable/instrument-sans": "^5.3.0",
     "@storybook/addon-a11y": "^10.6.8",
