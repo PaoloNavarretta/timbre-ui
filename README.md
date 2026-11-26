@@ -4,6 +4,8 @@ A warm, accessible React component library: rigorous code underneath, creative f
 
 In sound, timbre is what makes the same note sound different on a piano and on a violin. Timbre components work the same way: the same behaviour and accessibility, a different character through the theme.
 
+![Timbre components in the light and dark themes: buttons in four variants with disabled and loading states, icon buttons, text fields with a description and an error, and checkboxes.](https://raw.githubusercontent.com/PaoloNavarretta/timbre-ui/main/docs/assets/timbre-components.png)
+
 > **Status:** version 0.1.0: Button, TextField, icons, IconButton and Checkbox. Browse every component, with live examples and docs, in [Storybook](https://paolonavarretta.github.io/timbre-ui/).
 
 ## Highlights
