@@ -75,4 +75,20 @@
   .input:checked:disabled::before {
     background: var(--timbre-color-ink-muted);
   }
+
+  /* A11Y: in forced colours mode (Windows high contrast) the browser replaces
+     every background with the page colour, so the tick disappears and a checked
+     box looks empty. The tick opts out and takes a system colour, which the
+     user's theme defines: CanvasText (the text colour), GrayText when disabled. */
+  @media (forced-colors: active) {
+    .input::before {
+      forced-color-adjust: none;
+      background: CanvasText;
+    }
+
+    /* Same selector as the disabled tick above, so this one wins. */
+    .input:checked:disabled::before {
+      background: GrayText;
+    }
+  }
 }
