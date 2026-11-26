@@ -1,0 +1,47 @@
+name: Storybook
+
+# Builds Storybook and publishes it on GitHub Pages after every merge into main.
+# The site lives at https://paolonavarretta.github.io/timbre-ui/.
+on:
+  push:
+    branches: [main]
+  # Adds a "Run workflow" button in the Actions tab, to publish again by hand.
+  workflow_dispatch:
+
+# One deployment at a time. A newer push waits for the running one instead of cancelling it halfway.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # Same setup as ci.yml, then the static site goes into a Pages artifact.
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build-storybook
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: storybook-static
+
+  # Publishes the artifact. Pages needs these two permissions, and only this job gets them.
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
