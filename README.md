@@ -1,5 +1,7 @@
 # Timbre
 
+[![CI](https://github.com/PaoloNavarretta/timbre-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/PaoloNavarretta/timbre-ui/actions/workflows/ci.yml)
+
 A warm, accessible React component library: rigorous code underneath, creative freedom on top.
 
 In sound, timbre is what makes the same note sound different on a piano and on a violin. Timbre components work the same way: the same behaviour and accessibility, a different character through the theme.
@@ -10,7 +12,7 @@ In sound, timbre is what makes the same note sound different on a piano and on a
 
 ## Highlights
 
-- **Accessible by contract.** WCAG 2.2 AA in both themes. Every story is checked with axe on every test run, and every component is tried by hand with the keyboard and VoiceOver.
+- **Accessible by design.** Built and tested to meet WCAG 2.2 AA in both themes. Every story is checked with axe on every test run, and every component is tried by hand with the keyboard and VoiceOver. How it is tested, and the known limits, are on the [Accessibility page](https://paolonavarretta.github.io/timbre-ui/?path=/docs/guides-accessibility--docs).
 - **Themes without JavaScript.** Light and dark come from one set of semantic tokens written with CSS `light-dark()`. Themes follow the system preference, or a `data-theme` attribute on any element, nested as deep as you like.
 - **Easy to override.** All styles live in CSS cascade layers, so any style in your app wins without `!important` or long selectors.
 - **Native first.** A `Button` is a `<button>`, a field has a real `<label>`. Native props and `ref` are forwarded, `className` is merged.
@@ -22,7 +24,7 @@ In sound, timbre is what makes the same note sound different on a piano and on a
 pnpm add timbre-ui
 ```
 
-Timbre needs React 19.
+Timbre needs React 19. It uses modern CSS (`light-dark()`, `:has()`, cascade layers), supported in Chrome and Edge 123, Firefox 121 and Safari 17.5 or later.
 
 ## Quick start
 

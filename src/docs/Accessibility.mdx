@@ -8,7 +8,7 @@ Accessibility is part of the contract of every Timbre component, like its props.
 
 ## The target
 
-Every component meets [WCAG 2.2](https://www.w3.org/TR/WCAG22/) level **AA**, in both themes.
+Every component is designed and tested to meet [WCAG 2.2](https://www.w3.org/TR/WCAG22/) level **AA**, in both themes.
 
 | Area           | What Timbre guarantees                                                                   |
 | -------------- | ---------------------------------------------------------------------------------------- |
@@ -18,6 +18,7 @@ Every component meets [WCAG 2.2](https://www.w3.org/TR/WCAG22/) level **AA**, in
 | Contrast       | Text pairs meet 4.5:1, control borders and focus rings 3:1, in both themes.              |
 | Target size    | Interactive targets are at least 24 × 24 pixels; the smallest control is 32px high.      |
 | Motion         | Durations drop to zero when the user asks for reduced motion.                            |
+| High contrast  | In Windows forced colours mode, focus rings and checked states stay visible.             |
 
 ## How it is checked
 
@@ -27,8 +28,15 @@ Every component meets [WCAG 2.2](https://www.w3.org/TR/WCAG22/) level **AA**, in
 | Rendered stories           | [axe-core](https://github.com/dequelabs/axe-core) through the Storybook a11y addon; a violation fails the test  | `pnpm test`                     |
 | Behaviour                  | [Testing Library](https://testing-library.com/docs/queries/about/#priority) queries by role and accessible name | `pnpm test`                     |
 | Keyboard and screen reader | By hand, with the keyboard and VoiceOver                                                                        | Every component, before release |
+| High contrast              | By hand, with Chrome DevTools → Rendering → Emulate CSS media feature `forced-colors`                           | Every component, before release |
 
 Automated tools find only part of the accessibility problems. The manual checks are not optional.
+
+## Known limits
+
+- Screen readers are tested with VoiceOver on macOS only, not yet with NVDA or JAWS on Windows.
+- The Checkbox box is 20 × 20 pixels. Clicking its label also toggles it.
+- Axe skips disabled controls; their contrast is checked by hand.
 
 ## Further reading
 

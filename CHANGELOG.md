@@ -1,5 +1,11 @@
 # timbre-ui
 
+## 0.1.1
+
+### Patch Changes
+
+- Checkbox: the tick stays visible in Windows high contrast (forced colours) mode, where the browser used to hide it.
+
 ## 0.1.0
 
 ### Minor Changes
