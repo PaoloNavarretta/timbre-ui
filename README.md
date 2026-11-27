@@ -1,6 +1,6 @@
 # Timbre
 
-[![CI](https://github.com/PaoloNavarretta/timbre-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/PaoloNavarretta/timbre-ui/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/timbre-ui)](https://www.npmjs.com/package/timbre-ui) [![Storybook](https://img.shields.io/badge/docs-Storybook-ff4785)](https://paolonavarretta.github.io/timbre-ui/) [![CI](https://github.com/PaoloNavarretta/timbre-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/PaoloNavarretta/timbre-ui/actions/workflows/ci.yml)
 
 A warm, accessible React component library: rigorous code underneath, creative freedom on top.
 
@@ -8,7 +8,7 @@ In sound, timbre is what makes the same note sound different on a piano and on a
 
 ![Timbre components in the light and dark themes: buttons in four variants with disabled and loading states, icon buttons, text fields with a description and an error, and checkboxes.](https://raw.githubusercontent.com/PaoloNavarretta/timbre-ui/main/docs/assets/timbre-components.png)
 
-> **Status:** version 0.1.0: Button, TextField, icons, IconButton and Checkbox. Browse every component, with live examples and docs, in [Storybook](https://paolonavarretta.github.io/timbre-ui/).
+> **Status:** Button, TextField, icons, IconButton and Checkbox are ready. Browse every component, with live examples and docs, in [Storybook](https://paolonavarretta.github.io/timbre-ui/).
 
 ## Highlights
 
